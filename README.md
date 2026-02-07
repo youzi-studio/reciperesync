@@ -1,12 +1,12 @@
 # RecipeResync
 
-一个服务端 NeoForge 模组，用于修复代理服务器架构下 JEI 配方不同步的问题。
+一个服务端 NeoForge 模组，用于修复代理服务器架构下 JEI/原版/其他合成表配方不同步的问题。
 
 ## 问题背景
 
 当使用以下代理架构时：
 ```
-NeoForge 客户端 → Velocity (25565) → Paper 大厅 (20000) → 转服 → NeoForge 模组服 (20001)
+NeoForge 客户端 → Velocity → Paper 大厅 → 转服 → NeoForge 模组服
 ```
 
 客户端需要安装 [`be_quiet_negotiator`](https://github.com/samuelh2005/BeQuietNegotiator) 模组，用于绕过 NeoForge 握手协商，以实现连接 Paper 大厅服务器。  
@@ -16,13 +16,13 @@ NeoForge 客户端 → Velocity (25565) → Paper 大厅 (20000) → 转服 → 
 
 > Do not use this mod! You will likely run into issues with mod compatibility, as Be Quiet Negotiator just suppresses errors and does not magically make incompatible mods work.
 
-并建议避免使用传统代理转发方式，而是为每个 NeoForge 服务器分配独立的公网IP；
-服务器间跳转则应使用 Minecraft 1.20.5 引入的原版 `/transfer` 指令，或Server Redirect模组。
-但上述方案对于**仅使用大厅作为统一登录入口的群组服架构而言并不友好**。
+并建议避免使用传统代理转发方式，而是为每个 NeoForge 服务器分配独立的公网IP。  
+服务器间跳转则应使用 Minecraft 1.20.5 引入的原版 `/transfer` 指令，或Server Redirect模组。  
+但上述方案对于**仅使用大厅作为统一登录入口的群组服架构而言并不友好**。  
 还有一种办法是使用 `/reload` 指令，但该指令属于**全局操作**，会强制刷新服务器上的所有玩家数据与资源状态。在玩家数量较多或服务器负载较高的情况下会造成不可预期的问题。
 
 ## 解决方案
-使用本模组
+使用本模组  
 本模组监听玩家加入事件，自动重新发送：
 1. **标签数据** (Tags) - 物品/方块/流体分组，配方原料匹配依赖此数据
 2. **配方数据** (Recipes) - 所有配方定义
