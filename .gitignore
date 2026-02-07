@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# macOS
+.DS_Store
+
+# NeoForge/Minecraft
+run/
+runs/
+logs/
+
+# Claude Code
+.claude/
